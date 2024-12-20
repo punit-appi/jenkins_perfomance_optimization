@@ -1,0 +1,18 @@
+pipeline {
+    agent {
+        label 'db-serv'
+    }
+
+    stages {
+        stage('Ping Test') {
+            steps {
+                script {
+                    def targetHost = 'google.com'
+                    echo "Pinging ${targetHost}..."
+                    sh 'ping -c 4 google.com'
+                    sh 'ping -c 4 google.com'
+                }
+            }
+        }
+    }
+}

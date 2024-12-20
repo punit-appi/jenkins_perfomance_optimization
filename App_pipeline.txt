@@ -1,0 +1,22 @@
+pipeline {
+    agent {
+        label 'app_build'
+    }
+
+    tools {
+        maven 'maven'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                git branch: 'main', url: 'https://github.com/punit-appi/java_task.git'
+            }
+        }
+        stage('Clean') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
+    }
+}
